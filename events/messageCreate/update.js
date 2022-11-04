@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { existsSync, readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
 
 module.exports = async (client, message) => {
 	// get embed and check if it's an embed in the git channel
@@ -10,8 +10,7 @@ module.exports = async (client, message) => {
 
 	// Check if the bot's branch is the right one
 	let restart;
-	if (GitEmbed.toJSON().title.startsWith('[Cactie:master]') && client.user.id == '848775888673439745') restart = true;
-	else if (GitEmbed.toJSON().title.startsWith('[Cactie:dev]') && client.user.id == '765287593762881616') restart = true;
+	if (GitEmbed.toJSON().title.startsWith('[Cactie-Music')) restart = true;
 	if (!restart) return;
 
 	// Check if all commits in message skip the update

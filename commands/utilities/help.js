@@ -1,5 +1,4 @@
 const { ButtonBuilder, ActionRowBuilder, EmbedBuilder, SelectMenuBuilder, SelectMenuOptionBuilder, ButtonStyle } = require('discord.js');
-const checkPerms = require('../../functions/checkPerms');
 
 module.exports = {
 	name: 'help',
@@ -11,14 +10,12 @@ module.exports = {
 	async execute(message, args, client, lang) {
 		try {
 			const helpdesc = require(`../../lang/${lang.language.name}/helpdesc.json`);
-			const srvconfig = await client.getData('settings', { guildId: message.guild.id });
 			let HelpEmbed = new EmbedBuilder()
 				.setColor('Random')
 				.setTitle('**HELP**');
 			let arg = args[0];
 			if (arg) arg = arg.toLowerCase();
-			if (arg == 'admin' || arg == 'fun' || arg == 'animals' || arg == 'music' || arg == 'nsfw' || arg == 'tickets' || arg == 'utilities' || arg == 'actions') {
-				if (arg == 'nsfw' && !message.channel.nsfw) return client.error('This channel is not NSFW. Please do this again in the appropriate channel.', message, true);
+			if (arg == 'music' || arg == 'utilities') {
 				const category = helpdesc[arg.toLowerCase()];
 				const commands = client.commands.filter(c => c.category == arg.toLowerCase());
 				const array = [];
@@ -27,43 +24,8 @@ module.exports = {
 				if (category.footer) HelpEmbed.setFooter({ text: category.footer });
 				if (category.field) HelpEmbed.setFields([category.field]);
 			}
-			else if (arg == 'supportpanel') {
-				const permCheck = checkPerms(['Administrator'], message.member);
-				if (permCheck) return client.error(permCheck, message, true);
-				const Panel = new EmbedBuilder()
-					.setColor(0x2f3136)
-					.setTitle('Need help? No problem!')
-					.setFooter({ text: `${message.guild.name} Support`, iconURL: message.guild.iconURL() });
-				let channel;
-				if (args[1]) channel = message.guild.channels.cache.get(args[1]);
-				if (!channel) channel = message.channel;
-				const permCheck2 = checkPerms(['SendMessages', 'ReadMessageHistory'], message.guild.members.me, channel);
-				if (permCheck2) return client.error(permCheck2, message, true);
-
-				if (srvconfig.tickets == 'buttons') {
-					Panel.setDescription('Click the button below to open a ticket!');
-					const row = new ActionRowBuilder()
-						.addComponents([
-							new ButtonBuilder()
-								.setCustomId('create_ticket')
-								.setLabel('Open Ticket')
-								.setEmoji({ name: '🎫' })
-								.setStyle(ButtonStyle.Primary),
-						]);
-					await channel.send({ embeds: [Panel], components: [row] });
-					return message.reply({ content: 'Support panel created! You may now delete this message' });
-				}
-				else if (srvconfig.tickets == 'reactions') {
-					Panel.setDescription('React with 🎫 to open a ticket!');
-					const panelMsg = await channel.send({ embeds: [Panel] });
-					await panelMsg.react('🎫');
-				}
-				else if (srvconfig.tickets == 'false') {
-					return client.error('Tickets are disabled!', message, true);
-				}
-			}
 			else {
-				HelpEmbed.setDescription('Please use the dropdown below to navigate through the help menu\n\n**Options:**\nAdmin, Fun, Animals, Music, NSFW, Tickets, Utilities, Actions');
+				HelpEmbed.setDescription('Please use the dropdown below to navigate through the help menu\n\n**Options:**\nMusic, Utilities');
 			}
 			const options = [];
 			const categories = Object.keys(helpdesc);
@@ -87,7 +49,7 @@ module.exports = {
 			const row2 = new ActionRowBuilder()
 				.addComponents([
 					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}/support/discord`)
+						.setURL('https://canary.smhsmh.club/discord')
 						.setLabel('Support Discord')
 						.setStyle(ButtonStyle.Link),
 					new ButtonBuilder()
@@ -104,16 +66,13 @@ module.exports = {
 				HelpEmbed = new EmbedBuilder()
 					.setColor('Random')
 					.setTitle('**HELP**');
-				if (interaction.values[0] == 'help_nsfw' && !helpMsg.channel.nsfw) { HelpEmbed.setDescription('**NSFW commands are only available in NSFW channels.**\nThis is not an NSFW channel!'); }
-				else {
-					const category = helpdesc[interaction.values[0].split('_')[1]];
-					const commands = client.commands.filter(c => c.category == interaction.values[0].split('_')[1]);
-					const array = [];
-					commands.forEach(c => { array.push(`**${c.name}${c.usage ? ` ${c.usage}` : ''}**${c.voteOnly ? ' <:vote:973735241619484723>' : ''}${c.description ? `\n${c.description}` : ''}${c.aliases ? `\n*Aliases: ${c.aliases.join(', ')}*` : ''}${c.permission ? `\nPermissions: ${c.permissions.join(', ')}` : ''}`); });
-					HelpEmbed.setDescription(`**${category.name.toUpperCase()}**\n${category.description}\n[] = Optional\n<> = Required\n\n${array.join('\n')}`);
-					if (category.footer) HelpEmbed.setFooter({ text: category.footer });
-					if (category.field) HelpEmbed.setFields([category.field]);
-				}
+				const category = helpdesc[interaction.values[0].split('_')[1]];
+				const commands = client.commands.filter(c => c.category == interaction.values[0].split('_')[1]);
+				const array = [];
+				commands.forEach(c => { array.push(`**${c.name}${c.usage ? ` ${c.usage}` : ''}**${c.voteOnly ? ' <:vote:973735241619484723>' : ''}${c.description ? `\n${c.description}` : ''}${c.aliases ? `\n*Aliases: ${c.aliases.join(', ')}*` : ''}${c.permission ? `\nPermissions: ${c.permissions.join(', ')}` : ''}`); });
+				HelpEmbed.setDescription(`**${category.name.toUpperCase()}**\n${category.description}\n[] = Optional\n<> = Required\n\n${array.join('\n')}`);
+				if (category.footer) HelpEmbed.setFooter({ text: category.footer });
+				if (category.field) HelpEmbed.setFields([category.field]);
 				row.components[0].options.forEach(option => option.setDefault(option.toJSON().value == interaction.values[0]));
 				interaction.editReply({ embeds: [HelpEmbed], components: [row, row2] });
 			});

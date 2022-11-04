@@ -23,8 +23,6 @@ module.exports = async (client, guild) => {
 		.setTitle(`Thanks for adding ${client.user.username} to ${guild.name}!`)
 		.setDescription(`
 My text command prefix is \`${srvconfig.prefix}\`, you may change this through the settings with \`/settings\`
-Type \`/help\` for help, and \`/invite\` to invite me to other servers!
-Please take some time going through the settings so that ${client.user.username} works well! \`/settings\`
 		`)
 		.setThumbnail(`${client.dashboardDomain}/assets/images/Cactie.png`);
 	const message = { embeds: [greetingEmbed], components: [row] };

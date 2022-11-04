@@ -5,6 +5,7 @@ const { Client, Partials, GatewayIntentBits } = require('discord.js');
 const client = new Client({
 	shards: 'auto',
 	partials: [
+		Partials.Guilds,
 		Partials.Message,
 		Partials.Channel,
 		Partials.GuildMember,

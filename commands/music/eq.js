@@ -22,12 +22,11 @@ module.exports = {
 			// Set effect if it isn't
 			player.effects = { ...player.effects };
 
-			// Add embed and buttons to message and send, the eq will be set in the buttons or dashboard
+			// Add embed and buttons to message and send, the eq will be set in the buttons
 			const EQEmbed = new EmbedBuilder()
 				.setColor(0x2f3136)
 				.setTitle(lang.music.eq.name)
 				.setDescription(lang.music.eq.choose)
-				.addFields([{ name: lang.music.eq.precise, value: `[${lang.dashboard.use}](${client.dashboardDomain}/music)` }])
 				.setFooter({ text: message.member.user.tag, iconURL: message.member.user.avatarURL() });
 			const but = new ButtonBuilder().setCustomId('filter_clear').setLabel(lang.off).setStyle(ButtonStyle.Danger);
 			const but2 = new ButtonBuilder().setCustomId('filter_bass').setLabel(lang.music.eq.bass).setStyle(ButtonStyle.Primary);

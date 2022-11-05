@@ -1,6 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, SelectMenuOptionBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const convertTime = require('../../functions/music/convert.js');
-const { shuffle, pause, play, music } = require('../../lang/int/emoji.json');
+const { shuffle, pause, play } = require('../../lang/int/emoji.json');
 const truncateString = (string, maxLength) =>
 	string.length > maxLength
 		? `${string.substring(0, maxLength)}…`
@@ -38,11 +38,6 @@ module.exports = async (client, player, track) => {
 				.setCustomId('music_pause')
 				.setEmoji({ id: player.paused ? play : pause })
 				.setStyle(ButtonStyle.Secondary),
-			new ButtonBuilder()
-				.setURL(`${client.dashboardDomain}/music`)
-				.setEmoji({ id: music })
-				.setLabel(lang.dashboard.name)
-				.setStyle(ButtonStyle.Link),
 		]);
 	const components = [row];
 

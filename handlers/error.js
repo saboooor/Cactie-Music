@@ -16,7 +16,7 @@ module.exports = client => {
 			row.push(new ActionRowBuilder()
 				.addComponents([
 					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}/support/discord`)
+						.setURL('https://cactie.smhsmh.club/support/discord')
 						.setLabel('Support Server')
 						.setStyle(ButtonStyle.Link),
 				]));

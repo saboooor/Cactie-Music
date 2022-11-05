@@ -21,16 +21,12 @@ module.exports = {
 			const row1 = new ActionRowBuilder()
 				.addComponents([
 					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}/invite`)
-						.setLabel('Invite Cactie!')
+						.setURL('https://cactie.smhsmh.club/invite')
+						.setLabel('Invite Cactie Music!')
 						.setStyle(ButtonStyle.Link),
 					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}/support/discord`)
+						.setURL('https://cactie.smhsmh.club/support/discord')
 						.setLabel('Join the Cactie Server!')
-						.setStyle(ButtonStyle.Link),
-					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}`)
-						.setLabel('Open the Dashboard!')
 						.setStyle(ButtonStyle.Link),
 				]);
 			const row2 = new ActionRowBuilder()

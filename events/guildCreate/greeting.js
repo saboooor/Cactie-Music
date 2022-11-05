@@ -1,16 +1,11 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const msg = require('../../lang/English/msg.json');
 
 module.exports = async (client, guild) => {
 	const srvconfig = await client.getData('settings', { guildId: guild.id });
 	const row = new ActionRowBuilder()
 		.addComponents([
 			new ButtonBuilder()
-				.setURL(client.dashboardDomain)
-				.setLabel(msg.dashboard.name)
-				.setStyle(ButtonStyle.Link),
-			new ButtonBuilder()
-				.setURL(`${client.dashboardDomain}/support/discord`)
+				.setURL('https://cactie.smhsmh.club/support/discord')
 				.setLabel('Support Server')
 				.setStyle(ButtonStyle.Link),
 			new ButtonBuilder()
@@ -24,7 +19,7 @@ module.exports = async (client, guild) => {
 		.setDescription(`
 My text command prefix is \`${srvconfig.prefix}\`, you may change this through the settings with \`/settings\`
 		`)
-		.setThumbnail(`${client.dashboardDomain}/assets/images/Cactie.png`);
+		.setThumbnail('https://cactie.smhsmh.club/assets/images/Cactie.png');
 	const message = { embeds: [greetingEmbed], components: [row] };
 	const owner = await guild.fetchOwner();
 	if (!guild.systemChannel) owner.send(message).catch(err => logger.warn(err));

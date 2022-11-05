@@ -43,11 +43,6 @@ module.exports = {
 						.setLabel(lang.refresh)
 						.setEmoji({ id: refresh })
 						.setStyle(ButtonStyle.Secondary),
-					new ButtonBuilder()
-						.setURL(`${client.dashboardDomain}/music`)
-						.setEmoji({ id: music })
-						.setLabel(lang.dashboard.name)
-						.setStyle(ButtonStyle.Link),
 				]);
 			const components = [row];
 

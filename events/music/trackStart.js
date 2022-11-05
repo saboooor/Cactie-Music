@@ -20,11 +20,8 @@ module.exports = async (client, player, track) => {
 	}
 	if (!player.voiceChannel) return;
 	const guild = client.guilds.cache.get(player.guild);
-	const srvconfig = await client.getData('settings', { guildId: guild.id });
-	let lang = require('../../lang/English/msg.json');
-	if (guild.preferredLocale.split('-')[0] == 'en') lang = require('../../lang/English/msg.json');
-	else if (guild.preferredLocale.split('-')[0] == 'pt') lang = require('../../lang/Portuguese/msg.json');
-	if (srvconfig.language != 'false') lang = require(`../../lang/${srvconfig.language}/msg.json`);
+	// Get the language for the user if specified or guild language
+	const lang = require('../../lang/English/msg.json');
 	const StartEmbed = new EmbedBuilder()
 		.setDescription(`<:play:${play}> **${lang.music.track.started}** \`[${convertTime(track.duration).replace('7:12:56', 'LIVE')}]\`\n[${track.title}](${track.uri})`)
 		.setFooter({ text: track.requester.tag, iconURL: track.requester.displayAvatarURL() })

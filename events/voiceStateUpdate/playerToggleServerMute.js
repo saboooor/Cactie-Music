@@ -13,12 +13,8 @@ module.exports = async (client, oldState, newState) => {
 	const song = player.queue.current;
 	if (!song) return;
 
-	// Set lang
-	const srvconfig = await client.getData('settings', { guildId: guild.id });
-	let lang = require('../../lang/English/msg.json');
-	if (guild.preferredLocale.split('-')[0] == 'en') lang = require('../../lang/English/msg.json');
-	else if (guild.preferredLocale.split('-')[0] == 'pt') lang = require('../../lang/Portuguese/msg.json');
-	if (srvconfig.language != 'false') lang = require(`../../lang/${srvconfig.language}/msg.json`);
+	// Get the language for the user if specified or guild language
+	const lang = require('../../lang/English/msg.json');
 
 	// Chcck if player should be paused or not or the event should be ignored
 	let playerpause;

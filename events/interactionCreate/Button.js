@@ -12,17 +12,8 @@ module.exports = async (client, interaction) => {
 	const button = client.buttons.get(interaction.customId ?? interaction.value);
 	if (!button) return;
 
-	// Get current settings for the guild
-	const srvconfig = await client.getData('settings', { guildId: interaction.guild.id });
-
 	// Get the language for the user if specified or guild language
-	let lang = require('../../lang/English/msg.json');
-	if (interaction.guild.preferredLocale.split('-')[0] == 'en') lang = require('../../lang/English/msg.json');
-	else if (interaction.guild.preferredLocale.split('-')[0] == 'pt') lang = require('../../lang/Portuguese/msg.json');
-	if (srvconfig.language != 'false') lang = require(`../../lang/${srvconfig.language}/msg.json`);
-	if (interaction.locale.split('-')[0] == 'en') lang = require('../../lang/English/msg.json');
-	else if (interaction.locale.split('-')[0] == 'pt') lang = require('../../lang/Portuguese/msg.json');
-
+	const lang = require('../../lang/English/msg.json');
 
 	// Check if bot has the permissions necessary in the guild to run the command
 	if (button.botPerms) {

@@ -5,120 +5,68 @@
         "set": "Your personal language has been set to English!",
         "invalid": "**Invalid Language!**\nPlease use a language from the list below:"
     },
-    "music": {
-        "search": {
-            "ing": "Searching for `{query}`...",
-            "notright": "Not the right result?",
-            "results": "Search Results",
-            "pick": "Pick a search result from the buttons below",
-            "picked": "Selected result #{num}",
-            "failed": "**Failed to search** No results found",
-            "found": "Found result for `{query}`",
-            "timeout": "Search query selection timed out"
+    "prefix": "**My prefix is `{pfx}`**\nIf my commands don't work:\n- try using slash commands (/)\n- Use my mention as a prefix ({usr})",
+    "off": "Off",
+    "on": "On",
+    "undo": "Undo",
+    "refresh": "Refresh",
+    "rolereq": "You need the {role} role to do that!",
+    "permreq": "You need the {perm} permission to do that!",
+    "page": "Page {1} of {2}",
+    "invalidmember": "Invalid member! Are they in this server?",
+    "dashboard": {
+        "name": "Dashboard",
+        "use": "Use the dashboard!",
+        "confusing": "Too confusing?"
+    },
+    "ping": {
+        "latency": "Message Latency",
+        "api": "API Latency"
+    },
+    "actions": {
+        "awooga": {
+            "plural": "AWOOGAS",
+            "footer": "👀👀"
         },
-        "added": {
-            "playlist": {
-                "top": "Added playlist to the start of the queue",
-                "end": "Added playlist to the queue"
-            },
-            "song": {
-                "top": "Added track to the start of the queue",
-                "end": "Added track to the queue"
-            },
-            "un": "Unadded item from queue" 
+        "bite": {
+            "plural": "bites",
+            "footer": "you taste good 👁️👅👁️"
         },
-        "stop": "Stopped the music",
-        "ended": "The music has ended",
-        "notinvc": "I'm not in a voice chat!",
-        "h24": {
-            "on": "24/7 mode is now enabled!",
-            "off": "24/7 mode is now disabled!"
+        "bonk": {
+            "plural": "bonks",
+            "footer": "get bonked 🔨"
         },
-        "np": "Now Playing",
-        "alrplaying": "I'm already currently playing music!",
-        "join": {
-            "ed": "Joined {vc} and sending messages to {txt}",
-            "move": "To force move me, use the move command."
+        "giggle": {
+            "plural": "giggles",
+            "footer": "hehehehehehe 🤭"
         },
-        "left": "Left the voice chat!",
-        "pause": {
-            "alr": "The player is already paused.",
-            "ed": "Paused",
-            "un": "Resumed"
+        "hug": {
+            "plural": "hugs",
+            "footer": "🤗"
         },
-        "vcupdate": {
-            "reason": "Reason",
-            "srvmute": "The bot has been server muted",
-            "srvunmute": "The bot has been server unmuted",
-            "join": "Someone joined the voice channel",
-            "leave": "The bot has been left alone",
-            "deafened": "Everyone's deafened",
-            "undeafened": "Someone undeafened themselves"
+        "kill": {
+            "plural": "kills",
+            "footer": "u die lol 🔫"
         },
-        "dj": {
-            "notfound": "The DJ role can't be found!"
+        "kiss": {
+            "plural": "kisses",
+            "footer": "mwah 😚"
         },
-        "eq": {
-            "name": "Equalizer",
-            "set": "Equalizer mode is now set to",
-            "choose": "Choose a mode to set the equalizer to.",
-            "precise": "Want a more precise equalizer?",
-            "bass": "Bass",
-            "boost": "Boost",
-            "maxed": "Maxed",
-            "party": "Party",
-            "pop": "Pop",
-            "radio": "Radio",
-            "soft": "Soft",
-            "treb": "Treble-Bass"
+        "lick": {
+            "plural": "licks",
+            "footer": "you taste good 👁️👅👁️"
         },
-        "track": {
-            "failed": "Failed to load the track!",
-            "stuck": "got stuck, skipping..",
-            "started": "Started playing",
-            "skipalr": "You've already voted to skip this song!",
-            "skipping": "Skipping Track?",
-            "forceskipmsg": "Use `/skip` to skip or `/forceskip` to force skip.",
-            "skipped": "Skipped",
-            "skipto": "Skipped {amnt} songs",
-            "loopalr": "You've already voted to toggle the track loop!",
-            "looping": {
-                "on": "Loop the track?",
-                "off": "Unloop the track?"
-            },
-            "loop": {
-                "on": "Now looping the track!",
-                "off": "No longer looping the track!"
-            },
-            "seek": {
-                "exceed": "Seek duration exceeds song duration.\nSong duration:",
-                "fwd": "Forward",
-                "rwd": "Rewind"
-            }
+        "mad": {
+            "plural": "is mad",
+            "footer": "stay mad 😤😡🤬"
         },
-        "queue": {
-            "cleared": "Cleared the queue",
-            "reversed": "Reversed the queue",
-            "indexnotfound": "The song index {index} isn't in the queue!",
-            "shuffle": {
-                "alr": "You've already voted to shuffle the queue!",
-                "ing": "Shuffle queue?",
-                "ed": "Shuffled the queue"
-            },
-            "loop": {
-                "alr": "You've already voted to toggle the queue loop!",
-                "ing": {
-                    "on": "Loop the queue?",
-                    "off": "Unloop the queue?"
-                },
-                "on": "Now looping the queue",
-                "off": "No longer looping the queue"
-            }
+        "nuzzle": {
+            "plural": "nuzzles",
+            "footer": "🤗"
         },
-        "volume": {
-            "current": "Current Volume",
-            "set": "Volume set",
-            "between": "Volume must be between 0 and 1000!"
+        "stare": {
+            "plural": "stares",
+            "footer": "🧍🏽"
         }
     }
 }

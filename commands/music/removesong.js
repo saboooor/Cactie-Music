@@ -8,7 +8,6 @@ module.exports = {
 	aliases: ['remsong', 'rm'],
 	args: true,
 	usage: '<Index of song in queue>',
-	similarcmds: 'remove',
 	player: true,
 	invc: true,
 	samevc: true,

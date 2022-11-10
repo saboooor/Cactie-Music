@@ -15,7 +15,8 @@ module.exports = {
 				.setTitle('**HELP**');
 			let arg = args[0];
 			if (arg) arg = arg.toLowerCase();
-			if (arg == 'music' || arg == 'utilities') {
+			if (arg == 'nsfw' && !message.channel.nsfw) return client.error('This channel is not NSFW. Please do this again in the appropriate channel.', message, true);
+			if (arg == 'music' || arg == 'nsfw' || arg == 'utilities') {
 				const category = helpdesc[arg.toLowerCase()];
 				const commands = client.commands.filter(c => c.category == arg.toLowerCase());
 				const array = [];
@@ -66,13 +67,16 @@ module.exports = {
 				HelpEmbed = new EmbedBuilder()
 					.setColor('Random')
 					.setTitle('**HELP**');
-				const category = helpdesc[interaction.values[0].split('_')[1]];
-				const commands = client.commands.filter(c => c.category == interaction.values[0].split('_')[1]);
-				const array = [];
-				commands.forEach(c => { array.push(`**${c.name}${c.usage ? ` ${c.usage}` : ''}**${c.voteOnly ? ' <:vote:973735241619484723>' : ''}${c.description ? `\n${c.description}` : ''}${c.aliases ? `\n*Aliases: ${c.aliases.join(', ')}*` : ''}${c.permission ? `\nPermissions: ${c.permissions.join(', ')}` : ''}`); });
-				HelpEmbed.setDescription(`**${category.name.toUpperCase()}**\n${category.description}\n[] = Optional\n<> = Required\n\n${array.join('\n')}`);
-				if (category.footer) HelpEmbed.setFooter({ text: category.footer });
-				if (category.field) HelpEmbed.setFields([category.field]);
+				if (interaction.values[0] == 'help_nsfw' && !helpMsg.channel.nsfw) { HelpEmbed.setDescription('**NSFW commands are only available in NSFW channels.**\nThis is not an NSFW channel!'); }
+				else {
+					const category = helpdesc[interaction.values[0].split('_')[1]];
+					const commands = client.commands.filter(c => c.category == interaction.values[0].split('_')[1]);
+					const array = [];
+					commands.forEach(c => { array.push(`**${c.name}${c.usage ? ` ${c.usage}` : ''}**${c.voteOnly ? ' <:vote:973735241619484723>' : ''}${c.description ? `\n${c.description}` : ''}${c.aliases ? `\n*Aliases: ${c.aliases.join(', ')}*` : ''}${c.permission ? `\nPermissions: ${c.permissions.join(', ')}` : ''}`); });
+					HelpEmbed.setDescription(`**${category.name.toUpperCase()}**\n${category.description}\n[] = Optional\n<> = Required\n\n${array.join('\n')}`);
+					if (category.footer) HelpEmbed.setFooter({ text: category.footer });
+					if (category.field) HelpEmbed.setFields([category.field]);
+				}
 				row.components[0].options.forEach(option => option.setDefault(option.toJSON().value == interaction.values[0]));
 				interaction.editReply({ embeds: [HelpEmbed], components: [row, row2] });
 			});

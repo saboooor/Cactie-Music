@@ -56,7 +56,7 @@ module.exports = async function redditFetch(subreddits, message, client, attempt
 	}
 
 	// If the post is NSFW, stop the user from using the function
-	if (!message.channel.nsfw) return message.react(nsfw).catch(err => client.error(err, message));
+	if (!message.channel.nsfw) return !message.commandName ? message.react(nsfw).catch(err => client.error(err, message)) : false;
 
 	// Get the timestamp of when the post was created
 	const timestamp = parseInt(`${data.created}` + '000');

@@ -21,9 +21,9 @@
   "author": "Saboor Bilal",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "@phamleduy04/erela.js": "^2.3.32",
+    "@phamleduy04/erela.js": "^2.3.33",
     "discord.js": "^14.6.0",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "fs": "0.0.1-security",
     "get-image-colors": "github:VoltrexMaster/get-image-colors",
     "hastebin": "^0.2.1",

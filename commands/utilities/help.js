@@ -26,7 +26,7 @@ module.exports = {
 				if (category.field) HelpEmbed.setFields([category.field]);
 			}
 			else {
-				HelpEmbed.setDescription('Please use the dropdown below to navigate through the help menu\n\n**Options:**\nMusic, Utilities');
+				HelpEmbed.setDescription('Please use the dropdown below to navigate through the help menu\n\n**Options:**\nMusic, NSFW, Utilities');
 			}
 			const options = [];
 			const categories = Object.keys(helpdesc);

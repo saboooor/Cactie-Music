@@ -27,7 +27,7 @@ module.exports = {
 					.setName(command.name)
 					.setDescription(command.description);
 				if (command.options) command.options(cmd);
-				await client.application?.commands.create(cmd.toJSON());
+				await client.application?.commands.create({ ...cmd.toJSON(), nsfw: command.category == 'nsfw' });
 				await msg.edit({ content: `Overwritten ${command.name}` });
 				await sleep(4000);
 			}

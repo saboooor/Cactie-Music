@@ -1,4 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
+const truncateString = (string, maxLength) =>
+	string.length > maxLength
+		? `${string.substring(0, maxLength)}…`
+		: string;
 
 module.exports = {
 	name: 'reloadcmds',
@@ -22,10 +26,9 @@ module.exports = {
 				command = command[1];
 				await msg.edit({ content: `Overwriting ${command.name}` });
 				if (command.type) continue;
-
 				const cmd = new SlashCommandBuilder()
 					.setName(command.name)
-					.setDescription(command.description);
+					.setDescription(truncateString(command.description, 99));
 				if (command.options) command.options(cmd);
 				await client.application?.commands.create({ ...cmd.toJSON(), nsfw: command.category == 'nsfw' });
 				await msg.edit({ content: `Overwritten ${command.name}` });

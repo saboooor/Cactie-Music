@@ -1,10 +1,10 @@
 {
-  "name": "cactiemusic",
+  "name": "cactieplus",
   "version": "5.3.0",
-  "description": "The music module for Cactie.",
+  "description": "The extra module for Cactie.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saboooor/Cactie-Music.git"
+    "url": "git+https://github.com/saboooor/Cactie-Plus.git"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,7 +1,7 @@
 {
     "music": {
         "name": "Music",
-        "description": "Music has been moved to Cactie Music. Click here to learn more."
+        "description": "These commands play music in your voice channel."
     },
     "nsfw": {
         "name": "NSFW",

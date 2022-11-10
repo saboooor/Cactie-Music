@@ -22,7 +22,7 @@ module.exports = {
 				.addComponents([
 					new ButtonBuilder()
 						.setURL('https://cactie.smhsmh.club/invite')
-						.setLabel('Invite Cactie Music!')
+						.setLabel('Invite Cactie Plus!')
 						.setStyle(ButtonStyle.Link),
 					new ButtonBuilder()
 						.setURL('https://cactie.smhsmh.club/support/discord')

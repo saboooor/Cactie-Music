@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
 
 	// Check if the bot's branch is the right one
 	let restart;
-	if (GitEmbed.toJSON().title.startsWith('[Cactie-Music')) restart = true;
+	if (GitEmbed.toJSON().title.startsWith('[Cactie-Plus')) restart = true;
 	if (!restart) return;
 
 	// Check if all commits in message skip the update

@@ -25,12 +25,12 @@ module.exports = {
 			for (let command of client.slashcommands) {
 				command = command[1];
 				await msg.edit({ content: `Overwriting ${command.name}` });
-				if (command.type) continue;
+				if (command.type || (command.category == 'nsfw' && command.name != 'nsfw')) continue;
 				const cmd = new SlashCommandBuilder()
 					.setName(command.name)
 					.setDescription(truncateString(command.description, 99));
 				if (command.options) command.options(cmd);
-				await client.application?.commands.create({ ...cmd.toJSON(), nsfw: command.category == 'nsfw' });
+				await client.application?.commands.create({ ...cmd.toJSON(), nsfw: command.name == 'nsfw' });
 				await msg.edit({ content: `Overwritten ${command.name}` });
 				await sleep(4000);
 			}

@@ -129,7 +129,7 @@ module.exports = async (client, message) => {
 			const row = new ActionRowBuilder()
 				.addComponents([
 					new ButtonBuilder()
-						.setURL(`https://top.gg/bot/${client.user.id}/vote`)
+						.setURL('https://top.gg/bot/765287593762881616/vote')
 						.setLabel('top.gg')
 						.setStyle(ButtonStyle.Link),
 				]);

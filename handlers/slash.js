@@ -8,6 +8,7 @@ module.exports = client => {
 		const slashcommandFiles = readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js') && folder != 'private');
 		for (const file of slashcommandFiles) {
 			const slashcommand = require(`../commands/${folder}/${file}`);
+			if (slashcommand.category == 'nsfw' && slashcommand.name != 'nsfw') continue;
 			client.slashcommands.set(slashcommand.name, slashcommand);
 		}
 	}

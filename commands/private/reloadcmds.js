@@ -25,7 +25,7 @@ module.exports = {
 			for (let command of client.slashcommands) {
 				command = command[1];
 				await msg.edit({ content: `Overwriting ${command.name}` });
-				if (command.type || (command.category == 'nsfw' && command.name != 'nsfw')) continue;
+				if (command.type) continue;
 				const cmd = new SlashCommandBuilder()
 					.setName(command.name)
 					.setDescription(truncateString(command.description, 99));
